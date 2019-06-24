@@ -1,0 +1,18 @@
+
+{% extends 'dashboard/base.html' %}
+
+{% block body%}
+
+
+  <form action="{% url 'dataset_review' id %}" method="post" enctype="multipart/form-data">
+      <div class="modal-body form-group shadow-textarea">
+         {% csrf_token %}
+          <input type="hidden" name="id" value="{{id}}">
+          <input type="hidden" value="error" name="dataset_reivew_msg">
+  <label for="exampleFormControlTextarea6">Description</label>
+  <textarea name="error_msg" class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="4" placeholder="Write something here..."></textarea>
+<input type="submit">
+      </div>
+  </form>
+
+{% endblock %}

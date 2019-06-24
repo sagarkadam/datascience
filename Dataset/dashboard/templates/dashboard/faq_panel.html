@@ -1,0 +1,73 @@
+
+{% extends 'dashboard/base.html' %}
+
+{% block body%}
+
+<div class="container"  style="background-color:#fff;">
+    {% if question_save %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Submission Done,</strong> Your Question submitted successfully..
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+        </div>
+
+
+    </div>
+    {% endif %}
+    <div class="row"><div class="col-lg-12">
+<h1>Submit a Question</h1>
+<form action="/admin_panel/faq_submit/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<p>
+    <label for="question_title" class="col-sm-2 col-md-12 col-form-label">Question Title</label>
+                        <input type="text" class="form-control" id="question_title" name="question_title">
+</p>
+<p>
+             <label for="exampleFormControlTextarea2">Answer</label>
+  <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" name="answer"></textarea>
+</p>
+    <p>
+        <label for="exampleFormControlTextarea2">Question Category</label>
+
+    <div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" class="custom-control-input" id="defaultInline1" name="question_category" value="Data Cleaning">
+  <label class="custom-control-label" for="defaultInline1">Data Cleaning</label>
+
+</div>
+        <div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" class="custom-control-input" id="defaultInline2" name="question_category" value="Data Prepossessing">
+  <label class="custom-control-label" for="defaultInline2">Data Prepossessing</label>
+
+</div>
+        <div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" class="custom-control-input" id="defaultInline3" name="question_category" value="Machine Learning">
+  <label class="custom-control-label" for="defaultInline3">Machine Learning</label>
+
+</div>
+        <div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" class="custom-control-input" id="defaultInline4" name="question_category" value="Deep Learning">
+  <label class="custom-control-label" for="defaultInline4">Deep Learning</label>
+
+</div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+  <input type="radio" class="custom-control-input" id="defaultInline5" name="question_category" value="common_questions">
+  <label class="custom-control-label" for="defaultInline5">Common Questions</label>
+
+</div>
+
+</p>
+<input type="submit" class="btn btn-primary" name="formSubmit" value="Submit Question">
+</form>
+
+</div></div>
+
+
+</div>
+{% endblock %}
+

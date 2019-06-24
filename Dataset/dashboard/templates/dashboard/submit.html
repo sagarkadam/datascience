@@ -1,0 +1,69 @@
+
+{% extends 'dashboard/base.html' %}
+
+{% block body%}
+
+<div class="container">
+    <div class="row"><div class="col-lg-12" style="background-color:#fff;">
+<h1>Submit a Dataset</h1>
+<p>We've relied on startups and our users to submit new startups for Launching Next. We found it's the best way to make sure we're always bringing you great, new submissions. Use the form to tell us about a startup. We review submissions every day, and you'll receive an email if we publish your startup.</p>
+<p>Submitting to Launching Next is free, but if you want your startup to be considered for publication within 1-business day, we offer a $49 upgrade on the next page.</p>
+<form action="{% url 'submit' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<h2><strong>About the Dataset</strong></h2>
+<p>
+    <label for="problem_name" class="col-sm-2 col-md-12 col-form-label">Problem Name</label>
+                        <input type="text" class="form-control" id="problem_name" name="problem_name">
+</p>
+<p>
+                <label for="max_algorithm" class="col-sm-2 col-md-12 col-form-label">Maximum Accuracy on which Algorithm, write its name</label>
+                        <input type="text" class="form-control" id="max_algorithm" name="max_algorithm">
+</p>
+<p>
+                <label for="model_accuracy" class="col-sm-12 col-form-label">Model Accuracy %</label>
+                        <input type="text" class="form-control" id="model_accuracy" name="model_accuracy">
+</p>
+
+<p>
+                <label for="file_type" class="col-sm-12 col-form-label">Dataset file type</label>
+                        <input type="text" class="form-control" id="file_type" name="file_type">
+</p>
+ <p>
+                <label for="dataset_size" class="col-sm-12 col-form-label">Dataset Size</label>
+                        <input type="text" class="form-control" id="dataset_size" name="dataset_size">
+</p>
+    <p>
+                <label for="document_link" class="col-sm-12 col-form-label">Document Url</label>
+                        <input type="text" class="form-control" name="document_link" id="document_link">
+</p>
+    <p>
+                <label for="github_link" class="col-sm-12 col-form-label">Github Url</label>
+                        <input type="text" class="form-control" name="github_link" id="github_link">
+</p>
+    <p>
+                <label for="jupyter_link" class="col-sm-12 col-form-label">Jupyter Notebook Url on which you get maximum accuracy</label>
+                        <input type="text" class="form-control" name="jupyter_link" id="jupyter_link">
+</p>
+
+    <p>
+                <label for="dataset_zip" class="col-sm-12 col-form-label">Dataset Url</label>
+                        <input type="text" class="form-control" name="dataset_zip" id="dataset_zip">
+</p>
+    <h2><strong>About You</strong></h2>
+<p>
+<label for="user">Your Name</label><br>
+<input type="text" class="form-control" name="user" maxlength="100" value="">
+</p>
+<p>
+<label for="email">Your Email Address</label><br>
+<input type="text" class="form-control" name="email" maxlength="100" value="">
+</p>
+<input type="submit" class="btn btn-primary" name="formSubmit" value="Submit Dataset">
+</form>
+
+</div></div>
+
+
+</div>
+{% endblock %}
+

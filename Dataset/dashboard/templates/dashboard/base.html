@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.5/css/mdb.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'dashboard/navbar.js' %}">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+
+
+    <title>DataSet Hosting Website</title>
+</head>
+<body style="margin-left:0;min-height:100vh;">
+<header>
+    <nav class="navbar fixed-top navbar-expand-sm navbar-dark scrolling-navbar" style="background-color: #2851A3">
+        <div class="container">
+            <a class="navbar-brand" href="/"><b>DataScience O<sub>2</sub></b></a>
+                    <form method="get" action="{% url 'search' %}" enctype="multipart/form-data" class="active-cyan-3 active-cyan-4" style="width:39%">
+                <input class="form-control" type="text" placeholder="Search Datasets" aria-label="Search"  name="search_text">
+                </form>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if request.path == '/admin_panel/' or request.path == '/admin_panel/datasets_panel/' or request.path == '/dashboard_panel/' or request.path == '/admin_panel/faq_panel/' %}
+            <ul class="navbar-nav nav-flex-icons">
+                 <li class="nav-item">
+                    <a class="nav-link header_text" href="{% url 'index' %}" target="_blank"><b>Site</b></a>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link header_text" href="{% url 'index' %}"><b>Home</b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link header_text" href="{% url 'datasets' %}">Datasets</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link header_text" href="{% url 'privacy' %}">Privacy</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link header_text" href="{% url 'about' %}">About Us</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link header_text" href="{% url 'submit' %}"><i class="fas fa-plus"></i>Submit a Dataset</a>
+                </li>
+            </ul>
+            {% endif %}
+
+        </div>
+        </div>
+    </nav>
+
+</header>
+<main style="background-color: #f4f4f4;padding-top:65px;height:100vh;">
+
+{% block body%}
+{% endblock %}
+</main>
+<!-- Footer -->
+<footer class="page-footer font-small" style="background-color: #385898">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <a href="">DataSet Hosting Website </a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</body>
+</html>

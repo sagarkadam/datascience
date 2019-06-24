@@ -1,0 +1,16 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body%}
+
+<div class="container" style="border-color:#c1e9cd;color:#000;color:rgb(44, 62, 80);">
+<div class="row">
+<div class="col-md-12">
+<div class="alert alert-dismissible alert-success">
+<h2 style="margin:0em 0em 0.5em 0em;">Submission received!</h2>
+<p style="font-size:1.2em;line-height:1.4em;">{% for  i in user_data%}{{i.username}}{% endfor %} Your submission is in the queue, and it typically takes <strong style="font-size:1.2em;">2-3 weeks</strong> for submissions to be reviewed. <br>We review submissions every day, and you'll receive an email if your submission is published.</p>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

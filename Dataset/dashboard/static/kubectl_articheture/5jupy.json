@@ -1,0 +1,58 @@
+{
+	"apiVersion": "apps/v1",
+	"kind": "Deployment",
+	"metadata": {
+		"name": "jupyter-notebook2",
+		"labels": {
+			"app": "jupyter-notebook2"
+		}
+	},
+	"spec": {
+		"replicas": 1,
+		"selector": {
+			"matchLabels": {
+				"app": "jupyter-notebook2"
+			}
+		},
+		"template": {
+			"metadata": {
+				"labels": {
+					"app": "jupyter-notebook2"
+				}
+			},
+			"spec": {
+				"volumes": [
+					{
+						"name": "nfs2",
+						"persistentVolumeClaim": {
+							"claimName": "nfs1"
+						}
+					}
+				],
+				"containers": [
+					{
+						"name": "minimal-notebook",
+						"image": "jupyter/scipy-notebook",
+						"ports": [
+							{
+								"containerPort": 8888
+							}
+						],
+						"command": [
+							"start-notebook.sh"
+						],
+						"args": [
+							"--NotebookApp.token=''"
+						],
+						"volumeMounts": [
+							{
+								"name": "nfs2",
+								"mountPath": "/home/jovyan/work"
+							}
+						]
+					}
+				]
+			}
+		}
+	}
+}

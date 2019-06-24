@@ -1,0 +1,20 @@
+{
+	"kind": "Service",
+	"apiVersion": "v1",
+	"metadata": {
+		"name": "jupyter-notebook2"
+	},
+	"spec": {
+		"type": "LoadBalancer",
+		"selector": {
+			"app": "jupyter-notebook2"
+		},
+		"ports": [
+			{
+				"protocol": "TCP",
+				"port": 80,
+				"targetPort": 8888
+			}
+		]
+	}
+}

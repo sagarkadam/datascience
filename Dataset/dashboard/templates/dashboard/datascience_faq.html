@@ -1,0 +1,86 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body%}
+{% if request.path == '/datascience_faq' %}
+<div class="container" style="background-color:#fff;">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="faq_heading">Frequently Asked Question</h2>
+    </div>
+  </div>
+  <div class="row">
+    {% for value in data %}
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <h2 class="panel-heading" style="font-weight:300;margin-bottom:26px"><a href="datascience_faq/{{value.0.question_url}}"  style="color:#3e6cca">{{value.0.question_category}}</a></h2>
+  <div class="panel-body">
+    <ul style="list-style-type:none;padding-left:2px">
+      {% for content in value %}
+      <li class="faq_list"><span class="faq_list_a">{{content.question}}</span></li>
+      {% endfor %}
+      <li class="faq_list"><a class="faq_list_all_q" href="datascience_faq/{{value.0.question_url}}">View all questions</a></li>
+    </ul>
+  </div>
+</div>
+    </div>
+{% endfor %}
+  </div>
+</div>
+  {% elif request.path == '/datascience_faq/data_cleaning/' or request.path == '/datascience_faq/data_prepossessing/' or request.path == '/datascience_faq/machine_learning/' or request.path == '/datascience_faq/deep_learning/' or request.path == '/datascience_faq/common_questions/'%}
+
+<div class="container">
+<div class="row">
+      <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+      <h2 class="faq_heading">{{questions_data.0.question_category}}</h2>
+    </div>
+  <div class="col-md-2"></div>
+</div>
+<div class="row">
+        {% for data in questions_data%}
+  <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <!--Accordion wrapper-->
+<div class="accordion md-accordion" id="accordionEx{{data.id}}" role="tablist" aria-multiselectable="true">
+
+  <!-- Accordion card -->
+  <div>
+
+    <!-- Card header -->
+    <div class="card-header" role="tab" id="headingOne{{data.id}}" style="background-color:white">
+      <a data-toggle="collapse" data-parent="#accordionEx{{data.id}}" href="#collapseOne{{data.id}}" aria-expanded="true"
+        aria-controls="collapseOne{{data.id}}">
+        <h5 class="mb-0" style="color:#202124">{{data.question}}<i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <!-- Card body -->
+    <div id="collapseOne{{data.id}}" style="background-color:white" class="collapse hide" role="tabpanel" aria-labelledby="headingOne{{data.id}}" data-parent="#accordionEx{{data.id}}">
+      <div class="card-body">
+       {{data.answer}}
+      </div>
+    </div>
+
+  </div>
+  <!-- Accordion card -->
+
+
+
+</div>
+<!-- Accordion wrapper -->
+          </div>
+
+<div class="col-md-2"></div>
+  {% endfor %}
+
+</div>
+</div>
+{% else %}
+<img src="http://cgcollege.org/Assets/images/icons/nodata-found.png" class="img-fluid rounded mx-auto d-block" alt="Responsive image">
+
+{% endif %}
+
+{% endblock %}
+</div>

@@ -1,0 +1,11 @@
+
+#!/bin/bash
+
+python3 manage.py migrate
+python3 manage.py collectstatic --noinput
+#python3 manage.py runserver 0.0.0.0:8000
+# starting gunicorn
+echo Starting Gunicorn.
+exec gunicorn fundoo.wsgi:application \
+ --bind 0.0.0.0:8000 \
+ --workers 1

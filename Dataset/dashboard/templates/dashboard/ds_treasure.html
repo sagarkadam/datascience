@@ -1,0 +1,66 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body%}
+<div class="container">
+<div class="row">
+    <div class="col-md-4">
+<!-- Card -->
+<div class="card">
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title"><a>5W1H</a></h4>
+    <!-- Text -->
+    <p class="card-text">Machine Learning explanation using 5W1H method</p>
+    <!-- Button -->
+    <a href="{% url 'ml_5w1h' %}" class="btn btn-primary">Read More</a>
+
+  </div>
+
+</div>
+<!-- Card -->
+</div>
+    <div class="col-md-4">
+<!-- Card -->
+<div class="card">
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title"><a>FAQ</a></h4>
+    <!-- Text -->
+    <p class="card-text">It contains mostly asked question in data science</p>
+    <!-- Button -->
+    <a href="/admin_panel/datasets_panel" class="btn btn-primary">Read More</a>
+
+  </div>
+
+</div>
+<!-- Card -->
+</div>
+    <div class="col-md-4">
+<!-- Card -->
+<div class="card">
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title"><a>Card title</a></h4>
+    <!-- Text -->
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <!-- Button -->
+    <a href="#" class="btn btn-primary">Button</a>
+
+  </div>
+
+</div>
+<!-- Card -->
+</div>
+
+    </div>
+    </div>
+{% endblock %}

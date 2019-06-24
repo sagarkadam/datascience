@@ -1,0 +1,77 @@
+{% extends 'dashboard/base.html' %}
+
+{% block body%}
+{% if all_datasets %}
+<div class="container" style="height: 100%">
+
+
+            <div class="row">
+                <div class="col-md-12 col-xs-12 col-sm-12">
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Problem Name</th>
+      <th scope="col">Algorithm Name</th>
+      <th scope="col">Model Accuracy</th>
+        <th scope="col">Dataset file type</th>
+      <th scope="col">Dataset Size</th>
+      <th scope="col">Document Link</th>
+      <th scope="col">Github Link</th>
+      <th scope="col">Dataset Link</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email Address</th>
+      <th scope="col">Valid/Error</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for dataset in all_datasets %}
+    <tr>
+      <td>{{ dataset.problem_name }}</td>
+      <td>{{ dataset.max_algorithm }}</td>
+      <td>{{ dataset.model_accuracy }}</td>
+        <td>{{ dataset.file_type }}</td>
+      <td>{{ dataset.dataset_size }}</td>
+      <td>                                <a class="btn btn-warning btn-circle waves-effect waves-light" title="Pdf file" href="{{ dataset.document_link }}"><i class="fas fa-file-pdf"></i></a>
+</td>
+        <td>                                <a class="btn btn-secondary btn-circle waves-effect waves-light" title="Github link" href="{{ dataset.github_link}}"><i class="fab fa-github"></i></a>
+</td>
+      <td>                                <a class="btn  btn-info btn-circle waves-effect waves-light" title="Run Live Code" href="{{ dataset.aws_jupyter_link}}"><i class="fas fa-code"></i></a>
+</td>
+      <td>@mdo</td>
+              <td>@mdo</td>
+<td>
+    <div class="row">
+
+        <div class="col-md-6">
+            <form action="{% url 'dataset_review' dataset.id %}" method="post" enctype="multipart/form-data">
+                          {% csrf_token %}
+                    <input type="hidden" value="success" name="dataset_reivew_msg">
+    <button type="submit" style="color:white" class="btn  btn-success btn-circle waves-effect waves-light" title="Valid"><i class="far fa-check-circle"></i>
+    </button> </form>
+        </div>
+         <div class="col-md-6">
+    <a href="{% url 'dataset_review' dataset.id %}"  style="color:white" class="btn btn-danger btn-circle waves-effect waves-light" title="Error"><i class="fas fa-exclamation-circle"></i>
+    </a>
+        </div>
+    </div>
+
+
+</td>
+
+    </tr>
+{% endfor %}
+
+  </tbody>
+</table>
+                </div>
+            </div>
+
+</div>
+
+{% else %}
+<img src="http://cgcollege.org/Assets/images/icons/nodata-found.png" class="img-fluid rounded mx-auto d-block" alt="Responsive image">
+
+{% endif %}
+{% endblock %}
